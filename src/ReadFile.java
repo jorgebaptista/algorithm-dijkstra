@@ -15,26 +15,26 @@ public class ReadFile {
             File graphFile = new File(fileName);
             Scanner fileReader = new Scanner(graphFile);
 
-            if (fileReader.nextLine().compareTo("S") == 0)
+            if (fileReader.nextLine().compareTo("S") == 0) // if first line has a S
             {
                 System.out.println("Reading a stream of weighted arcs...");
             }
-            else
+            else // if not then stop the program
             {
                 System.out.println("This program only accepts a stream of weighted arcs for input");
                 return null;
             }
 
-            nodes = Integer.parseInt(fileReader.nextLine());
+            nodes = Integer.parseInt(fileReader.nextLine()); // parse second lines to int
 
-            List<String> lines = new ArrayList<>();
+            List<String> lines = new ArrayList<>(); // create a list to dynamically add line by line (edge by edge)
 
-            while (fileReader.hasNextLine())
+            while (fileReader.hasNextLine()) // while there is a line to read
             {
-                lines.add(fileReader.nextLine());
+                lines.add(fileReader.nextLine()); // add it to the list
             }
 
-            edges = lines.toArray(new String[lines.size()]);
+            edges = lines.toArray(new String[0]); // add these elements to an array
 
         } catch (FileNotFoundException e)
         {
@@ -57,6 +57,6 @@ public class ReadFile {
             g.addEdge(numbers[0], numbers[1], numbers[2]); // create the edges
         }
 
-        return g;
+        return g; // return the graph
     }
 }
